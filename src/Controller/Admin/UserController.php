@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Admin;
 
 use App\Entity\User;
 use App\Repository\UserRepository;
@@ -13,16 +13,16 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
-#[Route('/api')]
+#[Route('/api/admin')]
 class UserController extends AbstractController
 {
+    
     public function __construct(
         private ValidatorInterface $validator,
         private EntityManagerInterface $em,
         private UserRepository $repo,
         private SerializerInterface $ser
     ) {}
-
     
     #[Route('/users', name: 'app_users', methods: 'GET')]
     public function index(): JsonResponse
